@@ -23,5 +23,5 @@ Note: before running this page you should start you DBMS where the prediction pr
 Invoke the REST APIs:
 ******************************************************************************
 The three implemented REST APIs code as well as the required instruction for downloading the project and calling the REST APIs could be found in the following link: 
-https://github.com/ralphbn1995/Web-Service-Oriented-Architecture-for-Discovering-and-Accessing-Predictive-Methods-
+https://anonymous.4open.science/r/Web-Service-Oriented-Architecture-for-Discovering-and-Accessing-Predictive-Methods--2D54/README.md
 
