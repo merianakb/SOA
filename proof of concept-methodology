@@ -1,0 +1,38 @@
+Methodology
+
+Fourteen  methods for constructing models and predicting values, in addition to twelve sub-modules, were selected from the literature with 
+diverse properties. This data is used to populate the prediction methods property graph in Neo4j resulting in 61 nodes (i.e. method, input, 
+output, and submodule) and 96 relations. 
+The services matching component has been implemented as an independent Python component, which is connected to Neo4j database where the 
+property graph of the first component is stored. In addition, three prediction methods have been selected from the ProM tool and 
+implemented as REST APIs.
+
+First, we evaluated the component's capability to accurately search methods and generate the appropriate REST APIs for a range of user 
+requests using 20 manually generated requests.
+These requests were categorized into three main categories. The first category (\emph{C1}) involved requests to find services by setting 
+conditions on the prediction type only. For instance, the user requests a service that predicts the next activity or remaining time.
+The second category (\emph{C2})  involved requests to find services by setting additional conditions on the service properties, such as 
+the methodology used, the algorithm employed, etc.
+Finally, the last category (\emph{C3})  involved requests to find specific sub-modules of a service.
+
+Second, for the REST API implementation, we selected three prediction methods that were proposed in the literature, and which were 
+implemented as plugins in the ProM tool. Due to lack of space, details related to the selected methods as well as the implemented Rest 
+APIs can be found on the provided link
+The first method, i.e. [1] involved generating a decision tree from event logs for use as a prediction model. 
+The decision tree could predict the outcome, next activity, or last value of an attribute. The second and third methods, i.e. [2], 
+involved building a Stochastic Petri-net (SPN) from an event log and using the built SPN to predict the remaining time of an ongoing 
+process.
+
+To implement the corresponding REST APIs, we accessed the Java source code of the two implemented packages in Eclipse. 
+We made some modifications and changes to the code before implementing the REST APIs using Java language. As a result, 
+we implemented 3 REST APIs: one for building the decision tree proposed in [1] one for building the SPN model proposed in [2] and one 
+for querying the built SPN model to get prediction values. The implemented REST APIs are then invoked from the Python application.
+
+
+References
+[1] De Leoni, Massimiliano and Van der Aalst, Wil MP and Dees, Marcus. 2014. A general framework for correlating business process characteristics. s.l. : Springer, 2014.
+[2] Prediction of business process durations using non-Markovian stochastic Petri nets. Rogge-Solti, Andreas and Weske, Mathias. 2015. 2015, Information Systems, pp. 1--14.
+
+
+
+
