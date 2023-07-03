@@ -1,0 +1,46 @@
+
+The use case involved a total of 12 participants, comprising individuals with varying backgrounds and levels of expertise. 
+Specifically, the group consisted of 4 data science students at the bachelor's and master's levels, 4 software engineering students, 
+3 Ph.D. students in  business process management, and 1 developer.  All participants had a solid understanding of process and data analysis, 
+as prediction methods are particularly relevant to their roles as analysts. However, their familiarity with REST APIs varied, with some 
+having extensive knowledge and others possessing only basic understanding. Additionally, some participants had prior experience using 
+process mining tools like ProM, while others were newcomers to such tools.
+
+An overview of process mining, prediction techniques, and the ProM tool was first presented to the participants. 
+The study was divided into three parts. The first part aimed to assess the participants' experiences with searching for and accessing 
+prediction methods using the ProM tool. Participants were asked to install the latest version of the ProM Nightly 
+build\footnote{https://promtools.org/prom-6-nightly-builds/} and were given access to 
+documentation\footnote{https://svn.win.tue.nl/repos/prom/Packages/} of all available packages in ProM. 
+To access a particular plugin in ProM, users must locate and install the package that contains the plugin in ProM's package manager. 
+In this use case, participants were asked to find prediction packages, install them, and launch the required plugins to execute one 
+prediction method. It should be noted that there were no limitations imposed on the prediction methods that could be searched for or 
+executed during this initial phase of the study. In the end, we requested participants to give their feedback, through a Google 
+Form\footnote{https://forms.gle/3ruRmnDDYowAmFJe6}, on the challenges they encountered while searching for the prediction methods 
+using one of the process mining tools and whether they were able to obtain the required information about each identified plugin.
+
+The second part aimed  to evaluate the user experience of searching for prediction methods with specific requirements using the 
+literature. To support the search process, participants were given two tables of existing prediction methods from recent systematic 
+reviews~\cite{predictivesurvey,predictivesurveyWhichone}. Eight different use cases for searching  a specific prediction method were 
+then presented. For each use case, participants were asked to search  for an existing published article that had proposed a prediction 
+method that meets the requirements and has been made available. Following their search, the participants were required to complete a 
+Google Form\footnote{https://forms.gle/jGnd7ZBS2xRA3cem8} containing the list of articles discovered for the use cases as well as the 
+duration spent on the search.
+
+Finally, the third part aimed to evaluate the participants' experience of searching for prediction methods that met specific requirements 
+by using REST API. Through this evaluation, we also aimed to assess the clarity and readability of the proposed URL design. 
+To achieve this, the participants were provided with 15 different REST APIs for existing prediction techniques, which were formatted 
+according to the design outlined in Section~\ref{subsec:restapiPrediction}. Similar to the second part, they were tasked with searching 
+for the REST API that met the requirements described in each of the eight use cases. In addition, they were required to submit their 
+findings via a Google Form\footnote{https://forms.gle/vNQn7Td8R7yxhmWz7}, which included a series of questions about the identified REST 
+APIs, the time it took to complete the task, their feedback on the REST API design, and their preference for using REST APIs or a process 
+mining tool.
+
+It is important to highlight that the workshop was conducted in multiple sessions, not all at once, to accommodate the participants. 
+The workshop took place three times, with one session held in person at the university and two sessions conducted remotely. 
+The same procedure was followed in each workshop, covering all three parts of the workshop. Participants were given the flexibility 
+to choose the order in which they performed the workshop parts based on their preferences. Additionally, there was no strict time 
+constraint imposed on the participants. They were free to complete the workshop parts and the corresponding Google Forms at their own 
+pace, although we requested an approximate completion time for reference purposes. As a result, out of the participants, 4 opted to 
+begin with ProM, then proceed to literature search, and finally utilize the REST APIs. 7 participants started with ProM, followed by 
+using the REST API, and then conducting literature search. Lastly, 1 participant chose to start with the REST API, then perform 
+literature search, and conclude with the utilization of the ProM tool.
