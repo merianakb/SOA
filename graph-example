@@ -1,0 +1,182 @@
+create (:Method{id:1, processAware:'no', type:'regression', methodology:'ML', algo:['svm'], predictorModel:'implicit', producedModel:'one'})
+
+create (:Method{id:2, processAware:'yes', type:'regression', methodology:'ATS', algo:['SPN'], predictorModel:'explicit', producedModel:'one'})
+simple example:
+create (:Method{id:1, predictionType:'remaining time', processAware:'yes', type:'regression', methodology:'ATS', algo:['SPN'], model:'explicit', producedModel:'one', task: 'predict'}) *
+create (:Method{id:2, predictionType:'remaining time', processAware:'yes', type:'regression', methodology:'ATS', algo:['SPN'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:3, predictionType:'next activity', processAware:'no', type:'classification', methodology:'ML', algo:['DT'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:4, predictionType:'LTL', processAware:'no', type:'classification', methodology:'ML', algo:['DT','CLU'], model:'explicit', producedModel:'many', task: 'build'}) *
+create (:Method{id:5, predictionType:'LTL', processAware:'no', type:'classification', methodology:'ML', algo:['DT','CLU'], model:'explicit', producedModel:'many', task: 'predict'}) *
+create (:Method{id:6, predictionType:'remaining time', processAware:'yes', type:'regression', methodology:'ML', algo:['SVR'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:7, predictionType:'next activity', processAware:'yes', type:'classification', methodology:'STAT', algo:['NB'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:8, predictionType:'remaining time', processAware:'yes', type:'regression', methodology:'ML', algo:['SVR'], model:'explicit', producedModel:'one', task: 'predict'}) *
+create (:Method{id:9, predictionType:'next activity', processAware:'yes', type:'classification', methodology:'STAT', algo:['NB'], model:'explicit', producedModel:'one', task: 'predict'}) *
+create (:Method{id:10, predictionType:'outcome', processAware:'no', type:'classification', methodology:'ML', algo:['SVM'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:11, predictionType:'remaining time', processAware:'no', type:'classification', methodology:'ML', algo:['SVM'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:12, predictionType:'outcome', processAware:'no', type:'classification', methodology:'ML', algo:['SVM'], model:'explicit', producedModel:'one', task: 'predict'}) *
+create (:Method{id:13, predictionType:'outcome', processAware:'no', type:'classification', methodology:'STAT', algo:['evolutional-algorithm'], model:'explicit', producedModel:'one', task: 'build'}) *
+create (:Method{id:14, predictionType:'indicator', processAware:'no', type:'classification', methodology:'STAT', algo:['evolutional-algorithm'], model:'explicit', producedModel:'one', task: 'predict'}) *
+
+create (:Output{name:'remaining time', format: 'json'}) *
+create (:Output{name:'SPN model', format: 'pnml'}) *
+create (:Output{name:'petri net', format: 'pnml'}) *
+create (:Output{name:'next activity', format: 'json'}) *
+create (:Output{name:'decision tree', format: 'arff'}) *
+create (:Output{name:'LTL', format: 'json'}) *
+create (:Output{name:'outcome classification model', format: ''}) *
+create (:Output{name:'time regression model', format: ''}) *
+create (:Output{name:'outcome value', format: 'json'}) *
+create (:Output{name:'feature vectors', format: ''}) *
+create (:Output{name:'decision rules', format: ''}) *
+create (:Output{name:'process indicators', format: ''}) *
+create (:Output{name:'indicator value', format: ''}) *
+
+create (:Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) *
+create (:Input{name:'runing case', format: 'XES', type: 'resource'}) *
+create (:Input{name:'SPN model', format: 'pnml', type: 'resource'}) *
+create (:Input{name:'distribution type', format: 'string', type: 'literal'}) *
+create (:Input{name:'unit time', format: 'string', type: 'literal'}) *
+create (:Input{name:'monitoring iterations', format: 'integer', type: 'literal'}) *
+create (:Input{name:'event log (DATA)', format: 'XES', type: 'resource'}) *
+create (:Input{name:'attributes', format: 'list', type: 'literal'}) *
+create (:Input{name:'activities', format: 'list', type: 'literal'}) *
+create (:Input{name:'confidence threshold', format: 'float', type: 'literal'}) *
+create (:Input{name:'prefix length interval', format: 'float', type: 'literal'}) *
+create (:Input{name:'classification function', format: '', type: 'resource'}) *
+create (:Input{name:'classifiers', format: 'arff', type: 'resource'}) *
+create (:Input{name:'deadline', format: 'date', type: 'literal'}) *
+create (:Input{name:'petri net', format: 'pnml', type: 'resource'}) *
+create (:Input{name:'feature vectors', format: '', type: 'resource'}) *
+create (:Input{name:'outcome classification model', format: '', type: 'resource'}) *
+create (:Input{name:'time regression model', format: '', type: 'resource'}) *
+create (:Input{name:'process indicators', format: '', type: 'resource'}) *
+create (:Input{name:'decision rules', format: '', type: 'resource'}) *
+
+create (:Module{id:1, task: 'generate PN'}) *
+create (:Module{id:2, task: 'generate SPN'}) *
+create (:Module{id:3, task: 'encoding historical data'}) *
+create (:Module{id:4, task: 'clustering'}) *
+create (:Module{id:5, task: 'classification'}) *
+create (:Module{id:6, task: 'training models'}) *
+create (:Module{id:7, task: 'predict outcome values'}) *
+create (:Module{id:8, task: 'encoding runing case'}) *
+create (:Module{id:9, task: 'computing indicators'}) *
+create (:Module{id:10, task: 'encoding with process indicators'}) *
+create (:Module{id:11, task: 'generate decision rules'}) *
+create (:Module{id:12, task: 'predict indicator value'}) *
+
+match (o:Output), (m:Method) where o.name='remaining time' and m.id=1 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='SPN model' and m.id=2 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='decision tree' and m.id=3 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='decision tree' and m.id=4 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='LTL' and m.id=5 create (m)-[:hasoutput]->(o) *
+match (o:Output), (m:Method) where o.name='remaining time' and m.id=7 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='next activity' and m.id=8 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='outcome classification model' and m.id=10 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='time regression model' and m.id=11 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='outcome value' and m.id=12 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='remaining time' and m.id=12 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='decision rules' and m.id=13 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Method) where o.name='indicator value' and m.id=14 create (m)-[:hasOutput]->(o) *
+
+match (o:Output), (m:Module) where o.name='petri net' and m.id=1 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='SPN model' and m.id=2 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='feature vectors' and m.id=3 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='outcome classification model' and m.id=6 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='time regression model' and m.id=6 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='feature vectors' and m.id=8 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='remaining time' and m.id=7 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='outcome value' and m.id=7 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='process indicators' and m.id=9 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='feature vectors' and m.id=10 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='decision rules' and m.id=11 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='feature vectors' and m.id=8 create (m)-[:hasOutput]->(o) *
+match (o:Output), (m:Module) where o.name='indicator value' and m.id=9 create (m)-[:hasOutput]->(o) *
+
+match (m2:Method{id:2}), (i1: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i1) *
+match (m2:Method{id:2}), (i2: Input{name:'distribution type', format: 'string', type: 'literal'}) create (m2)-[:hasInput]->(i2) *
+match (m2:Method{id:2}), (i3: Input{name:'unit time', format: 'string', type: 'literal'}) create (m2)-[:hasInput]->(i3) *
+match (m1:Method{id:1}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i4) *
+match (m1:Method{id:1}), (i5: Input{name:'SPN model', format: 'pnml', type: 'resource'}) create (m1)-[:hasInput]->(i5) *
+match (m1:Method{id:1}), (i3: Input{name:'unit time', format: 'string', type: 'literal'}) create (m1)-[:hasInput]->(i3) *
+match (m1:Method{id:1}), (i7: Input{name:'monitoring iterations', format: 'integer', type: 'literal'}) create (m1)-[:hasInput]->(i7) *
+match (m3:Method{id:3}), (i1: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m3)-[:hasInput]->(i1) *
+match (m3:Method{id:3}), (i8: Input{name:'attributes', format: 'list', type: 'literal'}) create (m3)-[:hasInput]->(i8) *
+match (m3:Method{id:3}), (i9: Input{name:'activities', format: 'list', type: 'literal'}) create (m3)-[:hasInput]->(i9) *
+match (m3:Method{id:3}), (i10: Input{name:'confidence threshold', format: 'float', type: 'literal'}) create (m3)-[:hasInput]->(i10) *
+match (m4:Method{id:4}), (i11: Input{name:'prefix length interval', format: 'float', type: 'literal'}) create (m4)-[:hasInput]->(i11) *
+match (m4:Method{id:4}), (i12: Input{name:'classification function', format: '', type: 'resource'}) create (m4)-[:hasInput]->(i12) *
+match (m5:Method{id:5}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m5)-[:hasInput]->(i4) *
+match (m5:Method{id:5}), (i13: Input{name:'classifiers', format: 'arff', type: 'resource'}) create (m5)-[:hasInput]->(i13) *
+match (m6:Method{id:6}), (i1: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m6)-[:hasInput]->(i1) *
+match (m7:Method{id:7}), (i1: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m7)-[:hasInput]->(i1) *
+match (m8:Method{id:8}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m8)-[:hasInput]->(i4) *
+match (m8:Method{id:8}), (i14: Input{name:'deadline', format: 'date', type: 'literal'}) create (m8)-[:hasInput]->(i14) *
+match (m9:Method{id:9}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m9)-[:hasInput]->(i4) *
+match (m2:Method{id:10}), (i15: Input{name:'event log (DATA)', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i15) *
+match (m2:Method{id:11}), (i15: Input{name:'event log (DATA)', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i15) *
+match (m2:Method{id:12}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i4) *
+match (m2:Method{id:12}), (i16: Input{name:'outcome classification model', format: '', type: 'resource'}) create (m2)-[:hasInput]->(i16) *
+match (m2:Method{id:12}), (i17: Input{name:'time regression model', format: '', type: 'resource'}) create (m2)-[:hasInput]->(i17) *
+match (m2:Method{id:13}), (i15: Input{name:'event log (DATA)', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i15) *
+match (m2:Method{id:14}), (i4: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m2)-[:hasInput]->(i4) *
+match (m2:Method{id:14}), (i18: Input{name:'decision rules', format: '', type: 'resource'}) create (m2)-[:hasInput]->(i18) *
+
+match (m1:Module{id:1}), (i: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:2}), (i: Input{name:'petri net', format: 'pnml', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:3}), (i: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:6}), (i: Input{name:'feature vectors', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:8}), (i: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:7}), (i: Input{name:'feature vectors', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:7}), (i: Input{name:'outcome classification model', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:7}), (i: Input{name:'time regression model', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:9}), (i: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:10}), (i: Input{name:'event log (CF+DATA)', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:10}), (i: Input{name:'process indicators', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:11}), (i: Input{name:'feature vectors', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:8}), (i: Input{name:'runing case', format: 'XES', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:12}), (i: Input{name:'feature vectors', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+match (m1:Module{id:12}), (i: Input{name:'decision rules', format: '', type: 'resource'}) create (m1)-[:hasInput]->(i) *
+
+match (m1:Method{id:1}), (m2: Method{id:2}) create (m1)-[:buildingModel]->(m2) *
+match (m1:Method{id:5}), (m2: Method{id:4}) create (m1)-[:buildingModel]->(m2) *
+match (m1:Method{id:12}), (m2: Method{id:10}) create (m1)-[:buildingModel]->(m2) *
+match (m1:Method{id:12}), (m2: Method{id:11}) create (m1)-[:buildingModel]->(m2) *
+match (m1:Method{id:14}), (m2: Method{id:13}) create (m1)-[:buildingModel]->(m2) * 
+
+match (m2: Method{id:2}), (mo: Module{id:1}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:2}), (mo: Module{id:2}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:4}), (mo: Module{id:3}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:4}), (mo: Module{id:4}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:4}), (mo: Module{id:5}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:10}), (mo: Module{id:3}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:10}), (mo: Module{id:6}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:11}), (mo: Module{id:3}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:11}), (mo: Module{id:6}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:12}), (mo: Module{id:7}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:12}), (mo: Module{id:8}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:13}), (mo: Module{id:9}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:13}), (mo: Module{id:10}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:13}), (mo: Module{id:11}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:14}), (mo: Module{id:8}) create (m2)-[:submodule]->(mo) *
+match (m2: Method{id:12}), (mo: Module{id:8}) create (m2)-[:submodule]->(mo) *
+
+match (mo1: Module{id:1}), (mo2: Module{id:2}) create (mo1)-[:followedBy]->(mo2) *
+match (mo1: Module{id:3}), (mo2: Module{id:4}) create (mo1)-[:followedBy]->(mo2) *
+match (mo1: Module{id:4}), (mo2: Module{id:5}) create (mo1)-[:followedBy]->(mo2) *
+
+match (o:Output)-[r]-(m1:Method)-[t]-(i:Input) 
+optional match (m1)-[:submodule]-(mo1:Module)
+optional match  (m1)-[:buildingModel]-(m2:Method) 
+optional match (m2)-[:submodule]-(mo2:Module) 
+where o.name='remaining time' 
+return (o),(m1),(i),(mo1),(m2),(mo2)
+
+MATCH (om1:Output)-[:hasOutput]-(m1:Method)-[:hasInput]-(im1:Input)
+OPTIONAL MATCH (m1)-[:submodule]-(mo1:Module)
+OPTIONAL MATCH (omo1:Output)-[:hasOutput]-(mo1)-[:hasInput]-(imo1:Input)
+OPTIONAL MATCH (m1)-[:buildingModel]-(m2:Method)
+OPTIONAL MATCH (om2:Output)-[:hasOutput]-(m2)-[:hasInput]-(im2:Input)
+OPTIONAL MATCH (m2)-[:submodule]-(mo2:Module)
+OPTIONAL MATCH (omo2:Output)-[:hasOutput]-(mo2)-[:hasInput]-(imo2:Input)
+RETURN (om1),(m1),ID(m1),(im1),(mo1),ID(mo1),(omo1),(imo1),(m2),ID(m2),(om2),(im2),(mo2),ID(mo2),(omo2),(imo2)
