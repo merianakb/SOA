@@ -1,0 +1,246 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: REST API specification
+  description: REST APIs for prediction methods
+
+servers:
+  - url: https://example.io/v1
+
+# Basic authentication
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
+
+paths:
+  /method1/{task}/{predictionType}/{methodology}/{algorithm}:
+    post:
+      description: Execute method 1 and create the result file
+      parameters:
+        - in: path
+          name: task
+          description: specify whether the method is used to construct a predictor model or to return a predicted value
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: predictionType
+          description: specify the type of the prediction value returned by the method
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: methodology
+          description: specify the methodology used
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: algorithm
+          description: specify the algorithm employed
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: currentDate
+          description: specify the current date
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: unitType
+          description: specify the unit type
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                folderPath:
+                  type: string
+      responses:
+        '201':
+          description: File created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  folderName:
+                    type: string
+        '400':
+          description: Bad request
+
+    get:
+      description: Return the result file of method 1
+      parameters:
+        - in: path
+          name: task
+          description: specify whether the method is used to construct a predictor model or to return a predicted value
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: predictionType
+          description: specify the type of the prediction value returned by the method
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: methodology
+          description: specify the methodology used
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: algorithm
+          description: specify the algorithm employed
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: filename
+          description: specify the result file name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+  /method1/{task}/{predictionType}/{methodology}/{algorithm}/{moduleName}:
+    post:
+      description: Execute method 1 and create the result file
+      parameters:
+        - in: path
+          name: task
+          description: specify whether the method is used to construct a predictor model or to return a predicted value
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: predictionType
+          description: specify the type of the prediction value returned by the method
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: methodology
+          description: specify the methodology used
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: algorithm
+          description: specify the algorithm employed
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: moduleName
+          description: specify the module name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: currentDate
+          description: specify the current date
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: unitType
+          description: specify the unit type
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                folderPath:
+                  type: string
+      responses:
+        '201':
+          description: File created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  folderName:
+                    type: string
+        '400':
+          description: Bad request
+
+    get:
+      description: Return the result file of method 1
+      parameters:
+        - in: path
+          name: task
+          description: specify whether the method is used to construct a predictor model or to return a predicted value
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: predictionType
+          description: specify the type of the prediction value returned by the method
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: methodology
+          description: specify the methodology used
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: algorithm
+          description: specify the algorithm employed
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: moduleName
+          description: specify the module name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: filename
+          description: specify the result file name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully returned
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+        '500':
+          description: Internal server error
+ 
