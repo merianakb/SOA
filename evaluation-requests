@@ -1,0 +1,95 @@
+-prediction_type='remaining time'
+    pa= ''
+    type= ''
+    methodology=''
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain	selected method id: 20 (predict)   Rest API of the selected method: true
+					    13 (predict)				    true
+					    
+-prediction_type='outcome'
+    pa= ''
+    type= ''
+    methodology=''
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain	selected method id: 24 (predict)	Rest API of the selected method:true
+					    56 (sub-module)					true
+					    55 (sub-module)					true
+
+
+-prediction_type='LTL'
+    pa= ''
+    type= ''
+    methodology='ML'
+    algo=['DT']
+    predictorModel=''
+    producedModel=''
+=> Response: no response (only one algorithm is specified)	selected method id: 		Rest API of the selected method:
+-prediction_type='next activity'
+    pa= 'yes'
+    type= ''
+    methodology=''
+    algo=['NB']
+    predictorModel=''
+    producedModel=''
+=> Response:		selected method id: 21 (predict)		Rest API of the selected method: true
+-prediction_type='remaining time'
+    pa= 'yes'
+    type= 'regression'
+    methodology='ATS'
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain		selected method id: 13(predict)		Rest API of the selected method: true
+-prediction_type='remaining time'
+    pa= ''
+    type= 'regression'
+    methodology='ATS'
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain		selected method id: 13(predict)		Rest API of the selected method: true
+
+-prediction_type='remaining time'
+    pa= ''
+    type= ''
+    methodology=''
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain		selected method id: 0 (build)		Rest API of the selected method: true
+						    23(build)						 true
+						    54(sub-module)					 true
+						    12(sub-module)					 true
+						    11(sub-module) 					 true
+-prediction_type='outcome'
+    pa= ''
+    type= ''
+    methodology=''
+    algo=[]
+    predictorModel=''
+    producedModel=''
+=> Response: contain		selected method id: 22(build)		Rest API of the selected method: true
+						    59(sub-module) 					 true
+						    54(sub-module)					 true
+						    51(sub-module) 					 true
+-prediction_type='next activity'
+    pa= 'yes'
+    type= ''
+    methodology=''
+    algo=['NB']
+    predictorModel=''
+    producedModel=''
+=> Response: contain		selected method id: 19(build)		Rest API of the selected method: true
+
+-prediction_type='LTL'
+    pa= ''
+    type= ''
+    methodology='ML'
+    algo=['CLU']
+    predictorModel=''
+    producedModel=''
+=> Response: no response		selected method id: 		Rest API of the selected method:  
