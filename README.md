@@ -12,7 +12,7 @@ Populate the LPG in Neo4j with prediction methods information:
 Run the Python application to discover and invoke prediction REST APIs:
 ******************************************************************************
 
-1. Open the code folder using Pycharm or any other compatible editor.
+1. Open the 'service matching code.zip' folder using Pycharm or any other compatible editor.
 2. Open the 'authenticationParameters.py' file and change the authentication parameters by your username and password.
 2. Locate the main.py file and modify the service characteristics (lines 10 to 16) to match your search criteria. Save the changes and run the page.
 Note: before running this page you should start you DBMS where the prediction property graph is stored. This is required to allow the Python application to execute the constructed Cypher query over the graph.
