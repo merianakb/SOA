@@ -1,0 +1,77 @@
+1- A general framework for correlating business process characteristics (2014) (G)
+	*build-model/next-activity/ML/DT? activities=...&attributes=...&confidence-threshold=...
+		    /last-value
+                    /outcome
+	This approach is used to create the decision tree for different prediction types => multiple output => multiple rest apis for same method
+
+2- Prediction of business process durations using non-Markovian stochastic Petri nets (2015) [46] (G)
+	*build_model/rem-time/ATS/SPN ? distribution-types =...&unit-time=...
+		-- generate PN
+		-- generate SPN
+	*predict/rem_time/ATS/SPN ? monitoring-iterations=...&unit-time=...
+
+3- Clustering-Based Predictive Process Monitoring (2016) [22] (G)
+	*build-model/LTL/ML/CLUS?prefix-length-interval=...
+		-- encoding
+		-- clustering
+		-- classification
+	*predict/LTL/ML/CLUS?
+	In this case there are two algorithms: clustering and decision tree but we were able to represent only one of them
+
+4- Time and Activity Sequence Prediction of Business Process Instances (2018) [44] (G)
+	*build-model/rem-time/ML/SVR
+	*build-model/next-activity/STAT/NB
+	*predict/rem-time/ML/SVR? deadline=...
+	*predict/next-activity/STAT/NB
+	two prediction types + two different algorithm for annotating system => different rest apis (the two building model api call for the same plugin)
+
+
+5- PRISM – A Predictive Risk Monitoring Approach for Business Processes [12]
+	*predict/risk/similarity-measure/risk-propagation
+
+
+6- Designing and Evaluating an Interpretable Predictive Modeling Technique for Business Processes [4]
+	*build-model/next-activity/STAT/exceptation-maximization
+
+7- Complex Symbolic Sequence Encodings for Predictive Monitoring of Business Processes [31]
+	*build-model/outcome/machine-learning/hidden-markov-models and decision-tree
+	*predict/outcome/machine-learning/hidden-markov-models and decision-tree
+
+8- Predicting Deadline Transgressions Using Event Logs [41] (ProM)
+	*predict/risk/STAT/risk-indicator
+
+9- Comprehensible Predictive Models for Business Processes [5]
+	*build-model/next-activity/STAT/exceptation-maximization 
+	*predict/next-activity/STAT/exceptation-maximization
+	
+10- Predictive Business Process Monitoring with LSTM Neural Networks [55]
+	*build-model/next-activity/ANN/LSTM
+		    /remaining-time  same model is used for predicting both
+	*predict/next-activity/ANN/LSTM
+		/remaining-time  same model is used for predicting both
+
+11- Run-time prediction of business process indicators using evolutionary decision rules [34] (G) building model (ProM) prediciton (Camunda BPMS)
+	*build_model/indicator/STAT/evolutional-algortihm
+		--computing indicator
+		--encoding
+		-- generate decision rule using evaluotional algorithm
+	*predict/indicator/STAT/evolutional-algortihm
+		--encoding
+		--prediction
+	This work is considered as classification and regression problem because EA support both types
+
+12- Minimizing Overprocessing Waste in Business Processes via Predictive Activity Ordering [63] (G) available but not in ProM
+	*build-model/outcome/machine-learning/SVM
+		-- compute feature vector
+		-- training the model
+	*build-model/remaining-time/machine-leraning/SVM
+		-- compute feature vector
+		-- training the model
+	*predict/outcome/machine-learning/SVM
+		-- compute feature vector
+		-- predict probability and time
+	This approach takes the ongoing case, encode it and use the two trained models to predict the probabilities and the time
+	which can not be represented in the prediction API
+	Two building models for the same prediction method
+
+
